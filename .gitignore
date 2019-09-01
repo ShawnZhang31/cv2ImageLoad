@@ -1,7 +1,7 @@
 .vscode/
 Pipfile
 build/
-/cv2imageload_*
+/cv2imageload.*
 /dist
 __pycache__/
 /.pytest_cache
