@@ -6,7 +6,7 @@
  * @Last Modified time: 2019-09-01 11:09:18
  */
  '''
-__version__ = '1.0.1'
+__version__ = '1.0.2'
 name = 'cv2ImageLoad'
 
 from .imgload import ImageLoad

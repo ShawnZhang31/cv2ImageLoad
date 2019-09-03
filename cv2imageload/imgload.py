@@ -108,11 +108,33 @@ class ImageLoad():
     @staticmethod
     def checkifStringIsBase64Encode(base64_str):
         """检查string是否是base64"""
+        if ',' in base64_str:
+            base64_str=base64_str.split(',')[1]
         try:
             data = base64.b64decode(base64_str)
         except binascii.Error:
             return False
         return True
+    
+    @staticmethod
+    def base64EncodeImage(image, with_base64_header=False, file_ext='jpg'):
+        """将图像编码为base64的字符串
+        @参数:
+            image: 要进行编码的图片，numpy array
+            file_ext: 文件后缀名，默认参数为jpg
+            with_base64_header: 返回的字符串是否带base64的说明头
+        @返回值
+            图标进行base64编码之后的字符串
+        """
+        try:
+            imageData = cv2.imencode('.'+file_ext, image)
+        except cv2.error:
+            raise ImageLoadError('文件后缀名不正确')            
+        base64_str = imageData[1].tostring()
+        base64_str = base64.b64encode(base64_str).decode()
+        if with_base64_header:
+            base64_str = "data:image/"+file_ext+";base64,"+base64_str
+        return base64_str
 
     @staticmethod
     def loadImage(img_ref):

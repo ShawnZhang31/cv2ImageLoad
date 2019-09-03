@@ -18,4 +18,12 @@ try:
     image = ImageLoad.loadImage(file)
 except ImageLoadError as e:
     print(e.reason)
+
+# 将图片编码为base64字符串
+try:
+    base64_str = ImageLoad.base64EncodeImage(image, with_base64_header=True, file_ext='jpg')
+except ImageLoadError as error:
+    print(error.reason)
+print(base64_str[:30])
+
 ```
