@@ -14,6 +14,7 @@ except ImportError:
 
 # 导入urllib
 try:
+    import urllib
     from urllib import request
 except ImportError:
     print('导入urllib出错')

@@ -19,6 +19,18 @@ try:
 except ImageLoadError as e:
     print(e.reason)
 
+# 加载url图片
+try:
+    image = ImageLoad.loadImage(url)
+except ImageLoadError as e:
+    print(e.reason)
+
+# 加载base64编码的图片
+try:
+    image = ImageLoad.loadImage(base64_str)
+except ImageLoadError as e:
+    print(e.reason)
+
 # 将图片编码为base64字符串
 try:
     base64_str = ImageLoad.base64EncodeImage(image, with_base64_header=True, file_ext='jpg')
