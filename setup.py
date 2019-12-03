@@ -13,7 +13,7 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name = 'cv2imageload',
-    version = '1.0.2',
+    version = '1.0.3',
     author = 'Shawn Zhang',
     author_email = 'shawnzhang31@gmail.com',
     description = 'python cv2 load image from image file, url or base64 code of image',
@@ -25,6 +25,10 @@ setuptools.setup(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+    ],
+    install_requires=[
+        "opencv-contrib-python",
+        "validators",
     ],
     python_requires='>=3.0',
 )

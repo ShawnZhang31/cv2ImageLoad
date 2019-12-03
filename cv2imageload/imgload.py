@@ -54,6 +54,13 @@ class ImageLoad():
         :return: 表示图像的numpy array
         :rtype: numpy array
         '''
+        try :
+            opener=request.build_opener()
+            opener.open(url)
+        except urllib.error.HTTPError:
+            raise ImageLoadError('url指向的不是一个有效的图片链接')
+        except urllib.error.URLError:
+            raise ImageLoadError('url指向的不是一个有效的图片链接')
         try:
             resp=request.urlopen(url)
         except URLError as e:
