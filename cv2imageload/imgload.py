@@ -108,7 +108,10 @@ class ImageLoad():
         except binascii.Error:
             raise ImageLoadError('不是一个有效的Base64字符串')
         image = np.fromstring(imageData, np.uint8)
-        img = cv2.imdecode(image, cv2.IMREAD_UNCHANGED)
+        try:
+            img = cv2.imdecode(image, cv2.IMREAD_UNCHANGED)
+        except cv2.error:
+            raise ImageLoadError('Base64字符串不是一个有效的图片编码数据')
         if img is None:
             raise ImageLoadError('Base64字符串不是一个有效的图片')
         return img
